@@ -4,6 +4,7 @@ const colors = require('colors');
 const app = express();
 const port = 5000;
 const prompt = require("prompt-sync")();
+let p = document.getElementById("command")
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.raw());
@@ -18,6 +19,7 @@ function betterOutput(string) {
 function getInput(){
     command = prompt("> ");
     if (command === "exit") process.exit(1);  
+    p.innerHTML = command
     return
 }
 
@@ -43,6 +45,6 @@ app.post("/", (req, res) => {
     res.sendStatus(200)
 });
 
-app.listen(port, () => {
+app.listen(port,"https://roblox-terminal-site.netlify.app/", () => {
     console.log(`Example app listening on port ${port}`);
 });
